@@ -1,0 +1,13 @@
+asgiref
+beautifulsoup4
+certifi
+charset-normalizer
+crispy-bootstrap4
+idna
+Pillow
+pytz
+requests
+soupsieve
+sqlparse
+tzdata
+urllib3
