@@ -17,6 +17,13 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 
+from tienda.views import catalogo, inicio, login, registro
+
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('catalogo', catalogo),
+    path('inicio', inicio),
+    path('login', login),
+    path('registro', registro)
+    
 ]
