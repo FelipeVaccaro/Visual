@@ -1,67 +1,33 @@
-<nav>
-    <a href="#">Home</a>
-    <a href="#">Services</a>
-    <a href="#">Pricing</a>
-    <a href="#">About</a>
-    <a href="#">Contact</a>
-  </nav>
-
-  <style>
-
-  nav {
-    height: 5vh;
-    display: grid;
-    overflow: hidden;
-    place-content: center;
-    background-color: var(--body-color);
-
-    margin: 0;
-    padding: 0;
-    display: flex;
-    text-transform: uppercase;
-    font: bold 1.5rem sans-serif;
-  
-    & a {
-      color: var(--text-color);
-      cursor: pointer;
-      overflow: hidden;
-      transition: 0.3s;
-      position: relative;
-      text-decoration: none;
-      padding: 0 0.5em 0.25em;
-  
-      &::before {
-        content: "";
-        scale: 0 1;
-        position: absolute;
-        background: var(--accent-color);
-        transition: 0.3s, translate 0s 0.3s;
-        inset: calc(100% - var(--underline-thickness)) 0 0 0;
-      }
-  
-      &:hover {
-        color: var(--hover-color);
-  
-        &::before {
-          translate: 0;
-          transition: 0.3s;
-        }
-      }
-    }
-  
-    &:hover {
-      & a::before {
-        scale: 1;
-      }
-  
-      & a:has(~ a:hover)::before {
-        translate: 100% 0;
-        transition: 0.2s 0.2s, scale 0s 0.4s;
-      }
-  
-      & a:hover ~ a::before {
-        translate: -100% 0;
-        transition: 0.2s 0.2s, scale 0s 0.4s;
-      }
-    }
-  }</style>
+<nav class="navbar navbar-expand-lg bg-body-secondary">
+  <div class="container-fluid">
+    <img id="logoHome" src="../static/img/Logo.png" alt="" style="width: 50px; margin-right: 50px;">
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="/">Inicio</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" aria-current="page" href="/nosotros">Nosotros</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/catalogo">Catalogo</a>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Productos
+          </a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="#">Construccion</a></li>
+            <li><a class="dropdown-item" href="#">Decoracion e iluminacion</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="#">Herramientas</a></li>
+          </ul>
+        </li>
+      </ul>
+      <a class="nav-link active" aria-current="page" href="login"><button class="btn btn-outline-primary">Login</button></a>
+    </div>
+  </div>
+</nav>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% include 'navbar.html' %}
+    {% include 'bootstrap.html' %}
+</head>
+<body class="bg-secondary">
+    <div class="d-flex justify-content-center align-items-center vh-100">
+        <div class="bg-white dark:bg-dark p-4 rounded-lg shadow-lg max-w-md">
+          <h2 class="h4 font-weight-bold mb-3">Registro</h2>
+          <form>
+            <div class="mb-3">
+              <label for="email" class="form-label font-weight-medium">Correo electronico</label>
+              <input 
+                id="email" 
+                placeholder="Ingrese Correo electronico" 
+                class="form-control" 
+                type="email"
+              />
+            </div>
+            <div class="mb-3">
+              <label for="password" class="form-label font-weight-medium">Contraseña</label>
+              <input 
+                id="password" 
+                placeholder="Ingrese Contraseña" 
+                class="form-control" 
+                type="password"
+              />
+            </div>
+            <div class="mb-3">
+              <label for="password" class="form-label font-weight-medium">Confirmar contraseña</label>
+              <input 
+                id="password" 
+                placeholder="Confirmar Contraseña" 
+                class="form-control" 
+                type="password"
+              />
+            </div>
+            <button
+              type="submit"
+              class="btn btn-dark w-100"
+            >
+              Login
+            </button>
+            <a href="/registro">Crear Cuenta</a>
+          </form>
+        </div>
+      </div>
+      
+</body>
+</html>
