@@ -10,11 +10,13 @@
     <div class="d-flex justify-content-center align-items-center vh-100">
         <div class="bg-white dark:bg-dark p-4 rounded-lg shadow-lg max-w-md">
           <h2 class="h4 font-weight-bold mb-3">Registro</h2>
-          <form>
+          <form action="/registrar-usuario" method="post">
+            {% csrf_token %}
             <div class="mb-3">
               <label for="email" class="form-label font-weight-medium">Correo electronico</label>
               <input 
-                id="email" 
+                id="email"
+                name="registro_email"
                 placeholder="Ingrese Correo electronico" 
                 class="form-control" 
                 type="email"
@@ -27,11 +29,13 @@
                 placeholder="Ingrese Contraseña" 
                 class="form-control" 
                 type="password"
+                name="registro_pass1"
               />
             </div>
             <div class="mb-3">
               <label for="password" class="form-label font-weight-medium">Confirmar contraseña</label>
-              <input 
+              <input
+                name="registro_pass2"
                 id="password" 
                 placeholder="Confirmar Contraseña" 
                 class="form-control" 
@@ -42,9 +46,9 @@
               type="submit"
               class="btn btn-dark w-100"
             >
-              Login
+              Registrarse
             </button>
-            <a href="/registro">Crear Cuenta</a>
+  
           </form>
         </div>
       </div>

@@ -1,7 +1,8 @@
 <nav class="navbar navbar-expand-lg bg-body-secondary">
   <div class="container-fluid">
     <img id="logoHome" src="../static/img/Logo.png" alt="" style="width: 50px; margin-right: 50px;">
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -22,12 +23,21 @@
           <ul class="dropdown-menu">
             <li><a class="dropdown-item" href="#">Construccion</a></li>
             <li><a class="dropdown-item" href="#">Decoracion e iluminacion</a></li>
-            <li><hr class="dropdown-divider"></li>
+            <li>
+              <hr class="dropdown-divider">
+            </li>
             <li><a class="dropdown-item" href="#">Herramientas</a></li>
           </ul>
         </li>
       </ul>
-      <a class="nav-link active" aria-current="page" href="login"><button class="btn btn-outline-primary">Login</button></a>
+      {% if user.is_authenticated %}
+      <a class="nav-link active" aria-current="page" href="/cierre-sesion"><button
+          class="btn btn-outline-primary">Cerrar sesión</button></a>
+      {% else %}
+      <a class="nav-link active" aria-current="page" href="login"><button class="btn btn-outline-primary">Iniciar
+          sesión</button></a>
+      {% endif %}
+
     </div>
   </div>
 </nav>

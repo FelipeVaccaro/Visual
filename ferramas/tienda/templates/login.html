@@ -11,12 +11,14 @@
     <div class="d-flex justify-content-center align-items-center vh-100">
         <div class="bg-white dark:bg-dark p-4 rounded-lg shadow-lg max-w-md">
           <h2 class="h4 font-weight-bold mb-3">Login</h2>
-          <form action="/validacion_login" method="POST">
+          <form action="/validacion-login" method="POST">
+            {% csrf_token %}
             <div class="mb-3">
               <label for="email" class="form-label font-weight-medium">Correo electronico</label>
               <input 
-                id="email" 
-                placeholder="Ingrese su correo" 
+                id="email"
+                name="usuario" 
+                placeholder="Ingrese su correo"
                 class="form-control" 
                 type="email"
               />
@@ -25,6 +27,7 @@
               <label for="password" class="form-label font-weight-medium">Contraseña</label>
               <input 
                 id="password" 
+                name="contrasena"
                 placeholder="Ingrese su contraseña" 
                 class="form-control" 
                 type="password"
