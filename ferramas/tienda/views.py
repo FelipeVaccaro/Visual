@@ -58,7 +58,7 @@ def validacion_login(request):
 
         # Verifica si el usuario existe en la base de datos
         usr_encontrado = usuario.objects.get(usuario=usuario_entrante)
-        passw_entrante = usuario.objects.get(contrasena=passw_entrante)
+        passw_entrante = usuario.contrasena
         # usr_encontrado = authenticate(username=usuario.objects.get(usuario=usuario_entrante), password=usuario.objects.get(usuario=passw_entrante))
         print("usr encontrado: ",usr_encontrado)
         print("passw encontrado: ",passw_entrante)
