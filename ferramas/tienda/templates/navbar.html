@@ -13,31 +13,32 @@
         <li class="nav-item">
           <a class="nav-link" aria-current="page" href="/nosotros">Nosotros</a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" href="/catalogo">Catalogo</a>
-        </li>
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            Productos
+            Catalogo de Productos
           </a>
           <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="#">Construccion</a></li>
-            <li><a class="dropdown-item" href="#">Decoracion e iluminacion</a></li>
+            <li><a class="dropdown-item" href="/herramientas-catalogo">Herramientas Manuales</a></li>
             <li>
               <hr class="dropdown-divider">
             </li>
-            <li><a class="dropdown-item" href="#">Herramientas</a></li>
+            <li><a class="dropdown-item" href="/materiales-catalogo">Materiales Basicos</a></li>
+            <li>
+              <hr class="dropdown-divider">
+            </li>
+            <li><a class="dropdown-item" href="/equiposg-catalogo">Equipos de Seguridad</a></li>
           </ul>
         </li>
       </ul>
       {% if user.is_authenticated %}
-      <a class="nav-link active" aria-current="page" href="/cierre-sesion"><button
-          class="btn btn-outline-primary">Cerrar sesión</button></a>
-      {% else %}
-      <a class="nav-link active" aria-current="page" href="login"><button class="btn btn-outline-primary">Iniciar
-          sesión</button></a>
+        <a class="nav-link" aria-current="page" href="{% url 'cierre-sesion' %}">
+            <button class="btn btn-outline-primary">Cerrar sesión</button>
+        </a>
+      {% elif not user.is_authenticated %}
+        <a class="nav-link" aria-current="page" href="{% url 'inicio-sesion' %}">
+            <button class="btn btn-outline-primary">Iniciar sesión</button>
+        </a>
       {% endif %}
-
     </div>
   </div>
-</nav>
+</nav>  

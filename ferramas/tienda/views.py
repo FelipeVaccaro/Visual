@@ -1,4 +1,4 @@
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render, redirect
 from requests import Response
 from tienda.models import usuario
@@ -6,13 +6,20 @@ from django.contrib.auth import login, logout, authenticate
 # Create your views here.
 
 #FRONT
-def catalogo(request):
-    return render(request,'catalogo.html')
+
+def materiales(request):
+    return render(request, 'materiales-catalogo.html')
+
+def herramientas(request):
+    return render(request, 'herramientas-catalogo.html')
+
+def equiposg(request):
+    return render(request, 'equiposg-catalogo.html')
 
 def inicio(request):
     return render(request,'inicio.html')
 
-def login(request):
+def inicio_sesion(request):
     return render(request,'login.html')
 
 def registro(request):
@@ -42,7 +49,7 @@ def registrar_usuario(request):
         nuevo_usuario.usuario=registro_correo
         nuevo_usuario.contrasena=registro_pass1
         usuario.save(nuevo_usuario)
-        return redirect('/login')
+        return redirect('/inicio-sesion')
     else:
         mensaje = 'Las contraseñas no coinciden.'
         return HttpResponse(mensaje)
@@ -58,27 +65,16 @@ def validacion_login(request):
 
         # Verifica si el usuario existe en la base de datos
         usr_encontrado = usuario.objects.get(usuario=usuario_entrante)
-        passw_entrante = usuario.contrasena
-        # usr_encontrado = authenticate(username=usuario.objects.get(usuario=usuario_entrante), password=usuario.objects.get(usuario=passw_entrante))
-        print("usr encontrado: ",usr_encontrado)
-        print("passw encontrado: ",passw_entrante)
+        passw_entrante = usr_encontrado.contrasena
         user = authenticate(username=usuario_entrante, password=passw_entrante)
-        print("user: ",user)
-        # Verifica si la contraseña coincide
-        # if usr_encontrado.contrasena == passw_entrante:
-        # if usr_encontrado:
+        print("usuario authenticate: ",user)
         if user is None:
-            login(request)
-            print("login: ",request.user)
-            return redirect('/inicio')
-        else:
-            print("else")
-            # Si la contraseña no coincide, devuelve un error
             return HttpResponse(status=404)
-    # except usuario.DoesNotExist:
-    #     # Si el usuario no existe, devuelve un error
-    #     print("except")
-    #     return HttpResponse(status=404)
+        else:
+            login(request, user)
+            print("usr login:", request.user)
+            return redirect('/')
+
 
 #-----------------Fin Validación Login ---------------------
 
