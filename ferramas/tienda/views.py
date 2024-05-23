@@ -67,14 +67,15 @@ def validacion_login(request):
         usr_encontrado = usuario.objects.get(usuario=usuario_entrante)
         passw_entrante = usr_encontrado.contrasena
         user = authenticate(username=usuario_entrante, password=passw_entrante)
+        user.is_authenticated = True
         print("usuario authenticate: ",user)
         if user is None:
+            user.is_authenticated = False
             return HttpResponse(status=404)
         else:
             login(request, user)
             print("usr login:", request.user)
-            return redirect('/')
-
+            return render(request, 'inicio.html')
 
 #-----------------Fin Validación Login ---------------------
 

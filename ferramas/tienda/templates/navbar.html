@@ -5,6 +5,11 @@
       aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
+    {% if user.is_authenticated %}
+      <h1>workin user: {{user}}</h1>
+    {% else %}
+      <h1>not workin user: {{user}}</h1>
+    {% endif %}
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
@@ -30,13 +35,15 @@
           </ul>
         </li>
       </ul>
-      {% if user.is_authenticated %}
-        <a class="nav-link" aria-current="page" href="{% url 'cierre-sesion' %}">
-            <button class="btn btn-outline-primary">Cerrar sesión</button>
-        </a>
-      {% elif not user.is_authenticated %}
+      {% if request.user.is_authenticated %}
+      
+      <a class="nav-link" aria-current="page" href="{% url 'cierre-sesion' %}">
+        <button class="btn btn-outline-primary">Cerrar sesión</button>
+      </a>
+      {% else %}
+      
         <a class="nav-link" aria-current="page" href="{% url 'inicio-sesion' %}">
-            <button class="btn btn-outline-primary">Iniciar sesión</button>
+          <button class="btn btn-outline-primary">Iniciar sesión</button>
         </a>
       {% endif %}
     </div>
