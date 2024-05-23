@@ -59,27 +59,30 @@ def registrar_usuario(request):
 #--------------Validación Login -------------------------
 
 def validacion_login(request):
-    # try:
-        usuario_entrante = request.POST.get('usuario')
-        passw_entrante = request.POST.get('contrasena')
+    usuario_entrante = request.POST.get('usuario')
+    passw_entrante = request.POST.get('contrasena')
 
-        # Verifica si el usuario existe en la base de datos
+    # Verifica si el usuario existe en la base de datos
+    try:
         usr_encontrado = usuario.objects.get(usuario=usuario_entrante)
-        passw_entrante = usr_encontrado.contrasena
-        user = authenticate(username=usuario_entrante, password=passw_entrante)
+    except usuario.DoesNotExist:
+        return HttpResponse(status=404)
+
+    # Autentica al usuario
+    user = authenticate(request, username=usuario_entrante, password=passw_entrante)
+    if user is not None:
         user.is_authenticated = True
-        print("usuario authenticate: ",user)
-        if user is None:
-            user.is_authenticated = False
-            return HttpResponse(status=404)
-        else:
-            login(request, user)
-            print("usr login:", request.user)
-            return render(request, 'inicio.html')
+        login(request, user)
+        return render(request, 'inicio.html')
+    else:
+        return HttpResponse(status=404)
 
 #-----------------Fin Validación Login ---------------------
 
 def cierre_sesion(request):
     logout(request)
     print("logout: ",request.user)
-    return redirect('/')
+    if request.user.is_authenticated:
+        request.user.is_authenticated = False
+    else:
+        return redirect('/')
