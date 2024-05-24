@@ -25,7 +25,27 @@
                                       herramientas y materiales de construcción hasta accesorios e implementos de seguridad.</p>
           </div>
           <div class="col-md-6">
-            <img src="https://img.freepik.com/vector-gratis/gente-ferreteria-asistente-mujer-pie-hablando-hombre-herramientas-materiales-tienda-panorama-diseno-interiores-taladros-juegos-herramientas-martillos-destornilladores_575670-2440.jpg" alt="Ferretería Acme" class="img-fluid rounded">
+            <div id="carouselExampleAutoplaying" class="carousel slide" data-bs-ride="carousel">
+              <div class="carousel-inner">
+                <div class="carousel-item active">
+                  <img src="../static/img/herramientas-muralla.jpg" class="d-block w-100 h-300px" alt="...">
+                </div>
+                <div class="carousel-item">
+                  <img src="../static/img/muralla-herramientas.png" class="d-block w-100" alt="...">
+                </div>
+                <div class="carousel-item">
+                  <img src="../static/img/perro-carrousel.jpg" class="d-block w-100" alt="...">
+                </div>
+              </div>
+              <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+              </button>
+              <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+              </button>
+            </div>          
           </div>
         </div>
       </div>
@@ -89,12 +109,19 @@
 <style>
   body {
     font-family: Arial, sans-serif;
-    /* background-color: #f0f0f0; */
     margin: 0;
     padding: 0;
     background-color:darkgray;
     background-repeat: no-repeat;
     background-size: cover;
+  }
+  .carousel-item img {
+            height: 300px;
+            width: 500%;
+            object-fit: cover;
+  }
+  footer {
+    height: 200px;
   }
 </style>
 </html>
