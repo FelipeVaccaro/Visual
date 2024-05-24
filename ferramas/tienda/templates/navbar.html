@@ -1,51 +1,35 @@
 <nav class="navbar navbar-expand-lg bg-body-secondary">
   <div class="container-fluid">
     <img id="logoHome" src="../static/img/Logo.png" alt="" style="width: 50px; margin-right: 50px;">
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
-      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
-    {% if user.is_authenticated %}
-      <h1>workin user: {{user}}</h1>
-    {% else %}
-      <h1>not workin user: {{user}}</h1>
-    {% endif %}
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="/">Inicio</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" aria-current="page" href="/nosotros">Nosotros</a>
-        </li>
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            Catalogo de Productos
-          </a>
-          <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="/herramientas-catalogo">Herramientas Manuales</a></li>
-            <li>
-              <hr class="dropdown-divider">
-            </li>
-            <li><a class="dropdown-item" href="/materiales-catalogo">Materiales Basicos</a></li>
-            <li>
-              <hr class="dropdown-divider">
-            </li>
-            <li><a class="dropdown-item" href="/equiposg-catalogo">Equipos de Seguridad</a></li>
-          </ul>
-        </li>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item"><a class="nav-link" href="/">Inicio</a></li>
+        <li class="nav-item"><a class="nav-link" href="/nosotros">Nosotros</a></li>
+        <li class="nav-item"><a class="nav-link" href="/herramientas-catalogo">Herramientas Manuales</a></li>
+        <li class="nav-item"><a class="nav-link" href="/materiales-catalogo">Materiales Basicos</a></li>
+        <li class="nav-item"><a class="nav-link" href="/equiposg-catalogo">Equipos de Seguridad</a></li>
       </ul>
-      {% if request.user.is_authenticated %}
-      
-      <a class="nav-link" aria-current="page" href="{% url 'cierre-sesion' %}">
-        <button class="btn btn-outline-primary">Cerrar sesión</button>
-      </a>
-      {% else %}
-      
-        <a class="nav-link" aria-current="page" href="{% url 'inicio-sesion' %}">
-          <button class="btn btn-outline-primary">Iniciar sesión</button>
-        </a>
-      {% endif %}
+      <div class="navbar-nav ms-auto">
+          {% if user.is_authenticated %}
+          <span class="navbar-text">workin user: {{user}}</span>
+          {% else %}
+          <span class="navbar-text">not workin user: {{user}}</span>
+          {% endif %}
+        <div>
+          {% if request.user.is_authenticated %}
+          <a class="nav-link" aria-current="page" href="{% url 'cierre-sesion' %}">
+            <button class="btn btn-outline-primary">Cerrar sesión</button>
+          </a>
+          {% else %}
+          <a class="nav-link" aria-current="page" href="{% url 'inicio-sesion' %}">
+            <button class="btn btn-outline-primary">Iniciar sesión</button>
+          </a>
+          {% endif %}
+        </div>
+      </div>
     </div>
   </div>
-</nav>  
+</nav>
