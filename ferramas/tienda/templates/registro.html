@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro</title>
     {% include 'navbar.html' %}
     {% include 'bootstrap.html' %}
 </head>
@@ -16,7 +17,7 @@
               <label for="email" class="form-label font-weight-medium">Correo electronico</label>
               <input 
                 id="email"
-                name="registro_email"
+                name="username"
                 placeholder="Ingrese Correo electronico" 
                 class="form-control" 
                 type="email"
@@ -25,18 +26,18 @@
             <div class="mb-3">
               <label for="password" class="form-label font-weight-medium">Contraseña</label>
               <input 
-                id="password" 
+                name="password1"
+                id="password1" 
                 placeholder="Ingrese Contraseña" 
                 class="form-control" 
                 type="password"
-                name="registro_pass1"
               />
             </div>
             <div class="mb-3">
               <label for="password" class="form-label font-weight-medium">Confirmar contraseña</label>
               <input
-                name="registro_pass2"
-                id="password" 
+                name="password2"
+                id="password2" 
                 placeholder="Confirmar Contraseña" 
                 class="form-control" 
                 type="password"
@@ -50,6 +51,14 @@
             </button>
   
           </form>
+
+          {% if messages %}
+          {% for message in messages %}
+            {{ message }}
+          {% endfor %}
+          {% endif %}
+
+
         </div>
       </div>
       

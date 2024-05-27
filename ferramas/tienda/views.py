@@ -1,8 +1,8 @@
 from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render, redirect
-from requests import Response
-from tienda.models import usuario
+from django.contrib import messages
 from django.contrib.auth import login, logout, authenticate
+from django.contrib.auth.forms import UserCreationForm
 # Create your views here.
 
 #FRONT
@@ -35,49 +35,52 @@ def error_404(request, exception=None):
     return render(request, '404.html', status=404)
 
 
-#--------------Registro de data BBDD-------------------
+#--------------Registro de data BBDD 2-------------------
 
 def registrar_usuario(request):
-    print("request: ", request)
-    #obtiene datos desde el formulario en registro
-    registro_correo = request.POST.get('registro_email')
-    registro_pass1 = request.POST.get('registro_pass1')
-    registro_pass2 = request.POST.get('registro_pass2')
-    if registro_pass1 == registro_pass2:
-    #Registra al usuario en la BBDD
-        nuevo_usuario=usuario()
-        nuevo_usuario.usuario=registro_correo
-        nuevo_usuario.contrasena=registro_pass1
-        usuario.save(nuevo_usuario)
-        return redirect('/inicio-sesion')
+    if request.method == 'POST':
+        form = UserCreationForm(request.POST)
+        if form.is_valid():
+            form.save()
+            email = form.cleaned_data.get('username')
+            password = form.cleaned_data.get('password1')
+            password2 = form.cleaned_data.get('password2')
+            if password == password2:
+                user = authenticate(request, username=email, password=password)
+                return redirect('/inicio-sesion', messages)
+            else:
+                error_msj = messages.error(request, 'Las contraseñas no coinciden.')
+                return render(request, 'registro.html', {'title': error_msj})
+        else:
+            error_msj = messages.error(request, str(form.errors))
+            return render(request, 'registro.html', {'title': error_msj})
     else:
-        mensaje = 'Las contraseñas no coinciden.'
-        return HttpResponse(mensaje)
+        form = UserCreationForm()
+        return render(request, 'registro.html', {'form': form})
 
-#-----------------Fin registro data BBDD-----------------
+#-----------------Fin registro data BBDD 2-----------------
+
 
 #--------------Validación Login -------------------------
 
 def validacion_login(request):
-    usuario_entrante = request.POST.get('usuario')
-    passw_entrante = request.POST.get('contrasena')
-
-    # Verifica si el usuario existe en la base de datos
-    try:
-        usr_encontrado = usuario.objects.get(usuario=usuario_entrante)
-    except usuario.DoesNotExist:
-        return HttpResponse(status=404)
-
-    # Autentica al usuario
-    user = authenticate(request, username=usuario_entrante, password=passw_entrante)
-    if user is not None:
-        user.is_authenticated = True
-        login(request, user)
-        return render(request, 'inicio.html')
+    if request.method == 'POST':
+        email = request.POST["username"]
+        password = request.POST["password"]
+        user = authenticate(request, username=email, password=password)
+        if user is not None:
+            login(request, user)
+            return redirect('/', messages)
+        
+        else:
+            error_msj= messages.error(request, 'Usuario o contraseña incorrecta')
+            return render(request, 'login.html', {'title': error_msj })
     else:
-        return HttpResponse(status=404)
+        return render(request, 'login.html')
 
-#-----------------Fin Validación Login ---------------------
+#----------------- FIN Validación Login ---------------------
+
+#----------------- Cerrar Sesión -----------------------------
 
 def cierre_sesion(request):
     logout(request)
@@ -86,3 +89,5 @@ def cierre_sesion(request):
         request.user.is_authenticated = False
     else:
         return redirect('/')
+
+#----------------- Fin Cerrar Sesión -----------------------------

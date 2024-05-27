@@ -123,8 +123,3 @@ STATIC_URL = 'static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-
-AUTHENTICATION_BACKENDS = [
-    'tienda.backends.MiBackendDeAutenticacion',
-    # 'django.contrib.auth.backends.ModelBackend',  # También puedes incluir el backend de modelo predeterminado
-]

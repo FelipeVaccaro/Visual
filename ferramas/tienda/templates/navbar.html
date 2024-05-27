@@ -14,9 +14,8 @@
       </ul>
       <div class="navbar-nav ms-auto">
           {% if user.is_authenticated %}
-          <span class="navbar-text">workin user: {{user}}</span>
+          <span class="navbar-text">Usuario: {{user}}</span>
           {% else %}
-          <span class="navbar-text">not workin user: {{user}}</span>
           {% endif %}
         <div>
           {% if request.user.is_authenticated %}
