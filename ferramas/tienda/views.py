@@ -7,14 +7,8 @@ from django.contrib.auth.forms import UserCreationForm
 
 #FRONT
 
-def materiales(request):
-    return render(request, 'materiales-catalogo.html')
-
 def herramientas(request):
-    return render(request, 'herramientas-catalogo.html')
-
-def equiposg(request):
-    return render(request, 'equiposg-catalogo.html')
+    return render(request, 'catalogo.html')
 
 def inicio(request):
     return render(request,'inicio.html')

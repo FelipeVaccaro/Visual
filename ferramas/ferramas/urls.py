@@ -17,14 +17,12 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 
-from tienda.views import inicio, inicio_sesion, registro, home, nosotros, validacion_login, registrar_usuario, error_404, cierre_sesion, materiales, herramientas, equiposg
+from tienda.views import inicio, inicio_sesion, registro, home, nosotros, validacion_login, registrar_usuario, error_404, cierre_sesion, herramientas
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', home),
-    path('materiales-catalogo', materiales),
-    path('herramientas-catalogo', herramientas),
-    path('equiposg-catalogo', equiposg),
+    path('catalogo', herramientas),
     path('inicio', inicio),
     path('inicio-sesion', inicio_sesion, name='inicio-sesion'),
     path('registro', registro),
