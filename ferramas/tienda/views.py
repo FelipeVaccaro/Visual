@@ -43,7 +43,7 @@ def registrar_usuario(request):
         if form.is_valid():
             user = form.save()
             login(request, user)
-            messages.success(request, f'Registro exitoso. Binevenido {user}')
+            messages.success(request, f'Registro exitoso. Bienvenido {user}')
             return redirect('/')
         else:
             messages.error(request, 'Hubo un problema en el registro. Por favor, verifica los datos ingresados')
