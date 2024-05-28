@@ -41,22 +41,15 @@ def registrar_usuario(request):
     if request.method == 'POST':
         form = UserCreationForm(request.POST)
         if form.is_valid():
-            form.save()
-            email = form.cleaned_data.get('username')
-            password = form.cleaned_data.get('password1')
-            password2 = form.cleaned_data.get('password2')
-            if password == password2:
-                user = authenticate(request, username=email, password=password)
-                return redirect('/inicio-sesion', messages)
-            else:
-                error_msj = messages.error(request, 'Las contraseñas no coinciden.')
-                return render(request, 'registro.html', {'title': error_msj})
+            user = form.save()
+            login(request, user)
+            messages.success(request, f'Registro exitoso. Binevenido {user}')
+            return redirect('/')
         else:
-            error_msj = messages.error(request, str(form.errors))
-            return render(request, 'registro.html', {'title': error_msj})
+            messages.error(request, 'Hubo un problema en el registro. Por favor, verifica los datos ingresados')
     else:
         form = UserCreationForm()
-        return render(request, 'registro.html', {'form': form})
+    return render(request, 'registro.html', {'form': form})
 
 #-----------------Fin registro data BBDD 2-----------------
 
@@ -70,7 +63,8 @@ def validacion_login(request):
         user = authenticate(request, username=email, password=password)
         if user is not None:
             login(request, user)
-            return redirect('/', messages)
+            messages.success(request, 'Inicio de sesión exitoso')
+            return redirect('/')
         
         else:
             error_msj= messages.error(request, 'Usuario o contraseña incorrecta')
