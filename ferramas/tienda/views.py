@@ -9,11 +9,10 @@ from .models import Producto
 
 #FRONT
 
-def herramientas(request):
+def catalogo_productos(request):
     context={'productos': h}
     print(context)
     return render(request, 'catalogo.html',context)
-
 
 def inicio(request):
     return render(request,'inicio.html')
