@@ -3,12 +3,17 @@ from django.shortcuts import render, redirect
 from django.contrib import messages
 from django.contrib.auth import login, logout, authenticate
 from django.contrib.auth.forms import UserCreationForm
+from .productos import h
+from .models import Producto
 # Create your views here.
 
 #FRONT
 
 def herramientas(request):
-    return render(request, 'catalogo.html')
+    context={'productos': h}
+    print(context)
+    return render(request, 'catalogo.html',context)
+
 
 def inicio(request):
     return render(request,'inicio.html')
@@ -27,6 +32,9 @@ def nosotros(request):
 
 def error_404(request, exception=None):
     return render(request, '404.html', status=404)
+
+
+
 
 
 #--------------Registro de data BBDD 2-------------------
@@ -78,3 +86,10 @@ def cierre_sesion(request):
         return redirect('/')
 
 #----------------- Fin Cerrar Sesión -----------------------------
+
+#-----------------Funcion para productos-------------------------
+def tienda(request):
+    productos = Producto.objects.all()
+    return render(request, "tienda/tienda.html", {"productos":productos})
+#-----------------Fin funcion para productos----------------------
+

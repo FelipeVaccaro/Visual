@@ -30,6 +30,5 @@ urlpatterns = [
     path('404', error_404),
     path('validacion-login', validacion_login), #el loginpage usa validacion-login para autenticar al usuario del form
     path('registrar-usuario', registrar_usuario),
-    path('cierre-sesion', cierre_sesion, name='cierre-sesion'),
-    
+    path('cierre-sesion', cierre_sesion, name='cierre-sesion'), 
 ]
