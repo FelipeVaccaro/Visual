@@ -10,32 +10,15 @@
   <body>
     {% include 'navbar.html' %}
     <div class="container">
-
-      <div style="float:right;">
-          <p style="color: black;"></p>
-          {% include "carrito/widget.html" %}
+      <div style="float: right">
+        <p style="color: black"></p>
+        {% include "carrito/widget.html" %}
       </div>
       <div class="row">
-
-  {% for producto in productos %}
-
-          <div class="col-md-3">
-
-          <div class="card" style="width:100%;margin:5px 5px;">
-
-              <img src="{{producto.imagen.url}}" class="card-img-top">
-
-              <div class="card-body" style="text-align: center;">
-                  <h7 class="card-title">{{producto.nombre}}</h7>
-                  <p class="card-text">{{producto.precio}}&nbsp;$</p>
-              </div>
-          </div>
-          <div class="card-footer text-center">
-              <a href="" class="btn btn-succes">Agregar al carro</a>
-          </div>
-          </div> 
-  {% endfor %}
+        {% for item in data %}
+        <li>{{ item }}</li>
+        {% endfor %}
       </div>
-  </div>
-</body>
+    </div>
+  </body>
 </html>

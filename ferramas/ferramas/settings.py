@@ -39,7 +39,6 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'tienda',
     'carrito',
-    'api',
 ]
 
 MIDDLEWARE = [

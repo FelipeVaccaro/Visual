@@ -7,7 +7,7 @@ app_name="tienda"
 urlpatterns = [
     path('', views.inicio),
     path('inicio/', views.inicio),
-    path('catalogo/', views.catalogo_productos),
+    path('catalogo/', views.data_from_api, name='datos_flask'),
     path('inicio-sesion/', views.inicio_sesion, name='inicio-sesion'),
     path('registro/', views.registro),
     path('nosotros/', views.nosotros),
