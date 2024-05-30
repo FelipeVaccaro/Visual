@@ -11,7 +11,6 @@ from .models import Producto
 
 def catalogo_productos(request):
     context={'productos': h}
-    print(context)
     return render(request, 'catalogo.html',context)
 
 def inicio(request):

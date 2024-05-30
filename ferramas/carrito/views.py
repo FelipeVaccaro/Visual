@@ -23,7 +23,7 @@ def restar_producto(request, producto_id):
     carro.restar_producto(producto=Producto)
     return redirect("Tienda")
 
-def limpiar_carro(request, producto_id):
+def limpiar_carro(request):
     carro=Carro(request)
     carro.limpiar_carro()
     return redirect("Tienda")

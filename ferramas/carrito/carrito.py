@@ -27,7 +27,7 @@ class Carro:
     
     def guardar_carro(self):
         self.session["carro"]=self.carro
-        self.session.mmodified=True
+        self.session.modified=True
         
     def eliminar(self, producto):
         producto_id=str(producto.id)
