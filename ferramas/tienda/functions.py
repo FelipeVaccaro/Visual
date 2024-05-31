@@ -10,5 +10,4 @@ def data_from_api():
         data = response.json()
     except:
         data = []
-    print(data)
     return data

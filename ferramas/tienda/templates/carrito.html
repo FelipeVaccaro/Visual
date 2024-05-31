@@ -15,6 +15,7 @@
   </head>
   {% include 'navbar.html' %}
   <h1>Carrito de Compras</h1>
+  <a href="{% url 'carrito:limpiar_carrito' %}">Limpiar carrito</a>
   <table>
     <tr>
       <th>Producto</th>
@@ -29,21 +30,20 @@
       <td>{{ item.precio }}</td>
       <td>{{ item.precio_dolar }}</td>
       <td>{{ item.cantidad }}</td>
+      <td>{{ item.id }}</td>
       <td>
-        {% comment %}
         <a href="{% url 'carrito:eliminar_del_carrito' producto_id=item.id %}"
-          >Eliminar</a
-        >
-        <a href="{% url 'carrito:restar_del_carrito' producto_id=item.id %}"
+        >Eliminar</a
+        {% comment %} 
+        <a href="{% url 'restar_del_carrito' producto_id=item.id %}"
           >Restar</a
-        >
-        {% endcomment %}
+        > {% endcomment %}
       </td>
     </tr>
     {% endfor %}
   </table>
   <p>Total: {{ total }}</p>
-  <a href="{% url 'tienda:comprar' %}">Proceder a la Compra</a>
+  <a href="{% url 'carrito:init_transaction' total=total %}">Proceder a la Compra</a>
   <body></body>
   <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
 </html>

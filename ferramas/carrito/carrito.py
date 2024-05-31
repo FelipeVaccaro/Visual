@@ -19,6 +19,7 @@ class Carrito:
         else:
             self.carrito[producto_id] = {
                 'nombre': producto['NOMBRE'],
+                'id' : producto['ID_HERRAMIENTA'],
                 'precio': str(producto['VALOR']),
                 'precio_dolar': str(producto['VALOR_EN_DOLAR']),
                 'cantidad': 1,
@@ -45,7 +46,7 @@ class Carrito:
                 self.guardar()
     
     def limpiar(self):
-        self.session["carrito"]={}
+        self.session["session_key"]={}
         self.session.modified=True
     
     def obtener_total(self):

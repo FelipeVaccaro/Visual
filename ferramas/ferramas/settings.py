@@ -28,7 +28,6 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'tienda',
     'carrito',
-    'transbank_api',
 ]
 
 MIDDLEWARE = [

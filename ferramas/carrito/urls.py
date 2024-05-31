@@ -9,4 +9,6 @@ urlpatterns = [
     path('eliminar_del_carrito/<int:producto_id>/', views.eliminar_producto, name='eliminar_del_carrito'),
     path('restar_del_carrito/<int:producto_id>/', views.restar_producto, name='restar_del_carrito'),
     path('limpiar_carrito/', views.limpiar, name='limpiar_carrito'),
+    path('transaction/init/<int:total>', views.init_transaction, name='init_transaction'),
+    path('return/', views.transaction_return, name='transaction_return'),
 ]
