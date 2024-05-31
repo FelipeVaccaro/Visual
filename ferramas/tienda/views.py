@@ -4,27 +4,24 @@ from django.contrib import messages
 from django.contrib.auth import login, logout, authenticate
 from django.contrib.auth.forms import UserCreationForm
 from django.shortcuts import render
-import requests
-
-from .models import Producto
 # Create your views here.
 
 #FRONT
 
 def catalogo_productos(request):
-    return render(request, 'catalogo.html',context)
+    return render(request, 'catalogo.html')
 
 def inicio(request):
     return render(request,'inicio.html')
+
+def home(request):
+    return render(request, 'inicio.html')
 
 def inicio_sesion(request):
     return render(request,'login.html')
 
 def registro(request):
     return render(request,'registro.html')
-
-def home(request):
-    return render(request, 'inicio.html')
 
 def nosotros(request):
     return render(request, 'nosotros.html')
@@ -91,15 +88,3 @@ def tienda(request):
     productos = Producto.objects.all()
     return render(request, "tienda/tienda.html", {"productos":productos})
 #-----------------Fin funcion para productos----------------------
-
-def data_from_api(request):
-    url = ('http://127.0.0.1:5000/tools/')
-    response = requests.get(url)
-
-    if response.status_code == 200:
-        data = response.json()
-    else:
-        data = []
-
-    context = {'datos': data}
-    return render(request, 'catalogo.html', context)

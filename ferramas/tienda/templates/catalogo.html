@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -5,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Ferramas</title>
     {% include 'bootstrap.html' %}
-    <link rel="stylesheet" href="../static/css/styles.css" />
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}" />
   </head>
   <body>
     {% include 'navbar.html' %}
@@ -14,9 +15,26 @@
         <p style="color: black"></p>
         {% include "carrito/widget.html" %}
       </div>
-      <div class="row">
-        {% for item in data %}
-        <li>{{ item }}</li>
+    </div>
+    <div class="container">
+      <h2>Nuestros Productos</h2>
+      <div class="product-grid">
+        {% for item in datos_herramientas %}
+        <div class="product-card">
+          <img
+            src="{{ item.IMAGEN }}"
+            alt="{{ item.NOMBRE }}"
+            class="img-fluid mx-auto d-block"
+            style="width: 250px; height: auto"
+          />
+          <div class="product-details">
+            <h3 class="product-title">{{ item.NOMBRE }}</h3>
+            <p class="product-description">{{ item.CATEGORIA }}</p>
+            <p class="product-price">Precio CLP ${{ item.VALOR }}</p>
+            <p class="product-price">Precio USD ${{ item.VALOR_EN_DOLAR }}</p>
+            <button class="product-button">Añadir a Carrito</button>
+          </div>
+        </div>
         {% endfor %}
       </div>
     </div>

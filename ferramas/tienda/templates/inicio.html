@@ -1,127 +1,192 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    {% include 'bootstrap.html' %} 
-<title>Ferramas</title>
-<link rel="stylesheet" href="../static/styles.css">
-  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ferramas</title>
+    {% include 'bootstrap.html' %}
+    <link rel="stylesheet" href="../static/styles.css" />
+    <link
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    {% include 'navbar.html' %}
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+      crossorigin="anonymous"
+    ></script>
 
-</head>
-<body>
-  {% include 'navbar.html' %}
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
-
-  <main>
-    <section class="py-5 bg-light">
-      <div class="container">
-        <div class="row align-items-center">
-          <div class="col-md-6">
-            <h1 class="text-dark font-weight-bold">Bienvenido a Ferramas</h1>
-            <p class="text-secondary">En Ferramas, nos enorgullece ser tu socio de confianza para todos tus proyectos de construcción, 
-                                      reparación y mejoras del hogar. Ofrecemos una amplia gama de productos de alta calidad, desde 
-                                      herramientas y materiales de construcción hasta accesorios e implementos de seguridad.</p>
-          </div>
-          <div class="col-md-6">
-            <div id="carouselExampleAutoplaying" class="carousel slide" data-bs-ride="carousel">
-              <div class="carousel-inner">
-                <div class="carousel-item active">
-                  <img src="../static/img/herramientas-muralla.jpg" class="d-block w-100 h-300px" alt="...">
+    <main>
+      <section class="py-5 bg-light">
+        <div class="container">
+          <div class="row align-items-center">
+            <div class="col-md-6">
+              <h1 class="text-dark font-weight-bold">Bienvenido a Ferramas</h1>
+              <p class="text-secondary">
+                En Ferramas, nos enorgullece ser tu socio de confianza para
+                todos tus proyectos de construcción, reparación y mejoras del
+                hogar. Ofrecemos una amplia gama de productos de alta calidad,
+                desde herramientas y materiales de construcción hasta accesorios
+                e implementos de seguridad.
+              </p>
+            </div>
+            <div class="col-md-6">
+              <div
+                id="carouselExampleAutoplaying"
+                class="carousel slide"
+                data-bs-ride="carousel"
+              >
+                <div class="carousel-inner">
+                  <div class="carousel-item active">
+                    <img
+                      src="../static/img/herramientas-muralla.jpg"
+                      class="d-block w-100 h-300px"
+                      alt="..."
+                    />
+                  </div>
+                  <div class="carousel-item">
+                    <img
+                      src="../static/img/muralla-herramientas.png"
+                      class="d-block w-100"
+                      alt="..."
+                    />
+                  </div>
+                  <div class="carousel-item">
+                    <img
+                      src="../static/img/perro-carrousel.jpg"
+                      class="d-block w-100"
+                      alt="..."
+                    />
+                  </div>
                 </div>
-                <div class="carousel-item">
-                  <img src="../static/img/muralla-herramientas.png" class="d-block w-100" alt="...">
-                </div>
-                <div class="carousel-item">
-                  <img src="../static/img/perro-carrousel.jpg" class="d-block w-100" alt="...">
-                </div>
+                <button
+                  class="carousel-control-prev"
+                  type="button"
+                  data-bs-target="#carouselExampleAutoplaying"
+                  data-bs-slide="prev"
+                >
+                  <span
+                    class="carousel-control-prev-icon"
+                    aria-hidden="true"
+                  ></span>
+                  <span class="visually-hidden">Previous</span>
+                </button>
+                <button
+                  class="carousel-control-next"
+                  type="button"
+                  data-bs-target="#carouselExampleAutoplaying"
+                  data-bs-slide="next"
+                >
+                  <span
+                    class="carousel-control-next-icon"
+                    aria-hidden="true"
+                  ></span>
+                  <span class="visually-hidden">Next</span>
+                </button>
               </div>
-              <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="prev">
-                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                <span class="visually-hidden">Previous</span>
-              </button>
-              <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="next">
-                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                <span class="visually-hidden">Next</span>
-              </button>
-            </div>          
+            </div>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
 
-    <section class="py-5">
+      <section class="py-5">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-4">
+              <div class="bg-white rounded-lg shadow p-4 mb-4">
+                <i class="fas fa-tools text-danger fa-3x mb-3"></i>
+                <h3 class="text-dark font-weight-bold">Herramientas</h3>
+                <p class="text-secondary">
+                  Encuentra una amplia selección de herramientas de calidad para
+                  tus proyectos de construcción y reparación.
+                </p>
+                <a
+                  href="/herramientas-catalogo"
+                  class="text-danger font-weight-bold"
+                  >Ver Herramientas</a
+                >
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="bg-white rounded-lg shadow p-4 mb-4">
+                <i class="fas fa-tools text-danger fa-3x mb-3"></i>
+                <h3 class="text-dark font-weight-bold">Materiales</h3>
+                <p class="text-secondary">
+                  Encuentra todos los materiales de construcción y reparación
+                  que necesitas en un solo lugar.
+                </p>
+                <a
+                  href="/materiales-catalogo"
+                  class="text-danger font-weight-bold"
+                  >Ver Materiales</a
+                >
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="bg-white rounded-lg shadow p-4 mb-4">
+                <i class="fas fa-tools text-danger fa-3x mb-3"></i>
+                <h3 class="text-dark font-weight-bold">Equipos de Seguridad</h3>
+                <p class="text-secondary">
+                  Encuentra una amplia selección de equipos de seguridad para
+                  tus proyectos de construcción y reparación.
+                </p>
+                <a
+                  href="/equiposg-catalogo"
+                  class="text-danger font-weight-bold"
+                  >Ver Equipos</a
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="bg-dark text-light py-5">
       <div class="container">
         <div class="row">
-          <div class="col-md-4">
-            <div class="bg-white rounded-lg shadow p-4 mb-4">
-              <i class="fas fa-tools text-danger fa-3x mb-3"></i>
-              <h3 class="text-dark font-weight-bold">Herramientas</h3>
-              <p class="text-secondary">Encuentra una amplia selección de herramientas de calidad para tus proyectos de construcción y reparación.</p>
-              <a href="/herramientas-catalogo" class="text-danger font-weight-bold">Ver Herramientas</a>
-            </div>
+          <div class="col-md-6">
+            <i class="fas fa-tools text-danger fa-2x mr-2"></i>
+            <span class="h3 font-weight-bold">Ferramas</span>
           </div>
-          <div class="col-md-4">
-            <div class="bg-white rounded-lg shadow p-4 mb-4">
-              <i class="fas fa-tools text-danger fa-3x mb-3"></i>
-              <h3 class="text-dark font-weight-bold">Materiales</h3>
-              <p class="text-secondary">Encuentra todos los materiales de construcción y reparación que necesitas en un solo lugar.</p>
-              <a href="/materiales-catalogo" class="text-danger font-weight-bold">Ver Materiales</a>
-            </div>
-          </div>
-          <div class="col-md-4">
-            <div class="bg-white rounded-lg shadow p-4 mb-4">
-              <i class="fas fa-tools text-danger fa-3x mb-3"></i>
-              <h3 class="text-dark font-weight-bold">Equipos de Seguridad</h3>
-              <p class="text-secondary">Encuentra una amplia selección de equipos de seguridad para tus proyectos de construcción y reparación.</p>
-              <a href="/equiposg-catalogo" class="text-danger font-weight-bold">Ver Equipos</a>
-            </div>
+          <div class="col-md-6 text-right">
+            <a href="#" class="text-light mr-3">Términos de Uso</a>
+            <a href="#" class="text-light mr-3">Política de Privacidad</a>
+            <a href="#" class="text-light">Contacto</a>
           </div>
         </div>
       </div>
-    </section>
-  </main>
+    </footer>
 
-  <footer class="bg-dark text-light py-5">
-    <div class="container">
-      <div class="row">
-        <div class="col-md-6">
-          <i class="fas fa-tools text-danger fa-2x mr-2"></i>
-          <span class="h3 font-weight-bold">Ferramas</span>
-        </div>
-        <div class="col-md-6 text-right">
-          <a href="#" class="text-light mr-3">Términos de Uso</a>
-          <a href="#" class="text-light mr-3">Política de Privacidad</a>
-          <a href="#" class="text-light">Contacto</a>
-        </div>
-      </div>
-    </div>
-  </footer>
-
-  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-
-
-
-</body>
-<style>
-  body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color:darkgray;
-    background-repeat: no-repeat;
-    background-size: cover;
-  }
-  .carousel-item img {
-            height: 300px;
-            width: 500%;
-            object-fit: cover;
-  }
-  footer {
-    height: 200px;
-  }
-</style>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  </body>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: darkgray;
+      background-repeat: no-repeat;
+      background-size: cover;
+    }
+    .carousel-item img {
+      height: 300px;
+      width: 500%;
+      object-fit: cover;
+    }
+    footer {
+      height: 200px;
+    }
+  </style>
 </html>

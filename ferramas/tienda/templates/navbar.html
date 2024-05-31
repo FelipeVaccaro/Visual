@@ -49,6 +49,16 @@
             <button class="btn btn-outline-primary">Iniciar sesión</button>
           </a>
           {% endif %}
+          <form class="d-flex">
+            <a
+              href="{% url 'carrito:total_carrito' %}"
+              class="btn btn-outline-dark"
+              ><i class="bi-cart-fill me-1"></i>Carrito<span
+                class="badge bd-dark text-white ms-1 rounded-pill"
+                >0</span
+              ></a
+            >
+          </form>
         </div>
       </div>
     </div>
