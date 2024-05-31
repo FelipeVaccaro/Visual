@@ -1,6 +1,6 @@
 from django.apps import AppConfig
 
 
-class ApiDatosConfig(AppConfig):
+class TransbankApiConfig(AppConfig):
     default_auto_field = 'django.db.models.BigAutoField'
-    name = 'api_datos'
+    name = 'transbank_api'

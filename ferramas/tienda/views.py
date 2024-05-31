@@ -1,15 +1,17 @@
-from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render, redirect
 from django.contrib import messages
 from django.contrib.auth import login, logout, authenticate
 from django.contrib.auth.forms import UserCreationForm
 from django.shortcuts import render
+from carrito.carrito import Carrito
+from .functions import data_from_api
 # Create your views here.
 
 #FRONT
 
 def catalogo_productos(request):
-    return render(request, 'catalogo.html')
+    datos_herramientas = data_from_api()
+    return render(request, 'catalogo.html', {'datos_herramientas': datos_herramientas})
 
 def inicio(request):
     return render(request,'inicio.html')
@@ -83,8 +85,10 @@ def cierre_sesion(request):
 
 #----------------- Fin Cerrar Sesión -----------------------------
 
-#-----------------Funcion para productos-------------------------
-def tienda(request):
-    productos = Producto.objects.all()
-    return render(request, "tienda/tienda.html", {"productos":productos})
-#-----------------Fin funcion para productos----------------------
+def comprar(request):
+    carrito = Carrito(request)
+    items = carrito.obtener_items()
+    total = carrito.obtener_total()
+    carrito.limpiar()
+
+    return render(request, 'comprar.html', {'total': total, 'items': items})

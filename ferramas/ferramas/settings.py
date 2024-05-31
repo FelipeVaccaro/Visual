@@ -28,7 +28,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'tienda',
     'carrito',
-    'api_datos',
+    'transbank_api',
 ]
 
 MIDDLEWARE = [
@@ -54,6 +54,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                # 'carrito.contex_processors.carrito',
                 #'carrito.context_processor.importe_total_carro',
             ],
         },

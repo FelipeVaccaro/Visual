@@ -1,0 +1,49 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ferramas</title>
+    {% include 'bootstrap.html' %}
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}" />
+    <script
+      src="https://code.jquery.com/jquery-3.7.1.min.js"
+      integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
+      crossorigin="anonymous"
+    ></script>
+  </head>
+  {% include 'navbar.html' %}
+  <h1>Carrito de Compras</h1>
+  <table>
+    <tr>
+      <th>Producto</th>
+      <th>Precio</th>
+      <th>Precio en USD</th>
+      <th>Cantidad</th>
+      <th>Acciones</th>
+    </tr>
+    {% for item in carrito %}
+    <tr>
+      <td>{{ item.nombre }}</td>
+      <td>{{ item.precio }}</td>
+      <td>{{ item.precio_dolar }}</td>
+      <td>{{ item.cantidad }}</td>
+      <td>
+        {% comment %}
+        <a href="{% url 'carrito:eliminar_del_carrito' producto_id=item.id %}"
+          >Eliminar</a
+        >
+        <a href="{% url 'carrito:restar_del_carrito' producto_id=item.id %}"
+          >Restar</a
+        >
+        {% endcomment %}
+      </td>
+    </tr>
+    {% endfor %}
+  </table>
+  <p>Total: {{ total }}</p>
+  <a href="{% url 'tienda:comprar' %}">Proceder a la Compra</a>
+  <body></body>
+  <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+</html>

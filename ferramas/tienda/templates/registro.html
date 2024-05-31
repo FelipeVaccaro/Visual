@@ -1,66 +1,64 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Registro</title>
-    {% include 'navbar.html' %}
-    {% include 'bootstrap.html' %}
-</head>
-<body class="bg-secondary">
+    {% include 'navbar.html' %} {% include 'bootstrap.html' %}
+    <script
+      src="https://code.jquery.com/jquery-3.7.1.min.js"
+      integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
+      crossorigin="anonymous"
+    ></script>
+  </head>
+  <body class="bg-secondary">
     <div class="d-flex justify-content-center align-items-center vh-100">
-        <div class="bg-white dark:bg-dark p-4 rounded-lg shadow-lg max-w-md">
-          <h2 class="h4 font-weight-bold mb-3">Registro</h2>
-          <form action="/registrar-usuario" method="post">
-            {% csrf_token %}
-            <div class="mb-3">
-              <label for="email" class="form-label font-weight-medium">Correo electronico</label>
-              <input 
-                id="email"
-                name="username"
-                placeholder="Ingrese Correo electronico" 
-                class="form-control" 
-                type="email"
-              />
-            </div>
-            <div class="mb-3">
-              <label for="password" class="form-label font-weight-medium">Contraseña</label>
-              <input 
-                name="password1"
-                id="password1" 
-                placeholder="Ingrese Contraseña" 
-                class="form-control" 
-                type="password"
-              />
-            </div>
-            <div class="mb-3">
-              <label for="password" class="form-label font-weight-medium">Confirmar contraseña</label>
-              <input
-                name="password2"
-                id="password2" 
-                placeholder="Confirmar Contraseña" 
-                class="form-control" 
-                type="password"
-              />
-            </div>
-            <button
-              type="submit"
-              class="btn btn-dark w-100"
+      <div class="bg-white dark:bg-dark p-4 rounded-lg shadow-lg max-w-md">
+        <h2 class="h4 font-weight-bold mb-3">Registro</h2>
+        <form action="/registrar-usuario" method="post">
+          {% csrf_token %}
+          <div class="mb-3">
+            <label for="email" class="form-label font-weight-medium"
+              >Correo electronico</label
             >
-              Registrarse
-            </button>
-  
-          </form>
+            <input
+              id="email"
+              name="username"
+              placeholder="Ingrese Correo electronico"
+              class="form-control"
+              type="email"
+            />
+          </div>
+          <div class="mb-3">
+            <label for="password" class="form-label font-weight-medium"
+              >Contraseña</label
+            >
+            <input
+              name="password1"
+              id="password1"
+              placeholder="Ingrese Contraseña"
+              class="form-control"
+              type="password"
+            />
+          </div>
+          <div class="mb-3">
+            <label for="password" class="form-label font-weight-medium"
+              >Confirmar contraseña</label
+            >
+            <input
+              name="password2"
+              id="password2"
+              placeholder="Confirmar Contraseña"
+              class="form-control"
+              type="password"
+            />
+          </div>
+          <button type="submit" class="btn btn-dark w-100">Registrarse</button>
+        </form>
 
-          {% if messages %}
-          {% for message in messages %}
-            {{ message }}
-          {% endfor %}
-          {% endif %}
-
-
-        </div>
+        {% if messages %} {% for message in messages %} {{ message }} {% endfor
+        %} {% endif %}
       </div>
-      
-</body>
+    </div>
+  </body>
 </html>

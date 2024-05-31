@@ -7,13 +7,18 @@
     <title>Ferramas</title>
     {% include 'bootstrap.html' %}
     <link rel="stylesheet" href="{% static 'css/styles.css' %}" />
+    {% comment %} JQuery para carrito {% endcomment %}
+    <script
+      src="https://code.jquery.com/jquery-3.7.1.min.js"
+      integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
+      crossorigin="anonymous"
+    ></script>
   </head>
   <body>
     {% include 'navbar.html' %}
     <div class="container">
       <div style="float: right">
         <p style="color: black"></p>
-        {% include "carrito/widget.html" %}
       </div>
     </div>
     <div class="container">
@@ -32,11 +37,44 @@
             <p class="product-description">{{ item.CATEGORIA }}</p>
             <p class="product-price">Precio CLP ${{ item.VALOR }}</p>
             <p class="product-price">Precio USD ${{ item.VALOR_EN_DOLAR }}</p>
-            <button class="product-button">Añadir a Carrito</button>
+            <button
+              type="button"
+              value="{{ item.ID_HERRAMIENTA }}"
+              class="product-button btn btn-secondary añadir-al-carrito"
+            >
+              Añadir a Carrito
+            </button>
           </div>
         </div>
         {% endfor %}
       </div>
     </div>
   </body>
+  <script>
+    $(document).ready(function () {
+      $(".añadir-al-carrito").click(function (e) {
+        e.preventDefault();
+        var producto_id = $(this).val();
+
+        $.ajax({
+          type: "POST",
+          url: "{% url 'carrito:agregar_al_carrito' 0 %}".replace(
+            "0",
+            producto_id
+          ),
+          data: {
+            csrfmiddlewaretoken: "{{ csrf_token }}",
+          },
+          success: function (json) {
+            console.log(json);
+            alert("Producto añadido al carrito");
+          },
+          error: function (xhr, errmsg, err) {
+            console.error(xhr.status + ": " + xhr.responseText);
+            alert("Error al añadir el producto al carrito");
+          },
+        });
+      });
+    });
+  </script>
 </html>

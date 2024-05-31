@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Transacción Exitosa</title>
+  </head>
+  <body>
+    <h1>Transacción Exitosa</h1>
+    <p>Monto: {{ response.amount }}</p>
+    <p>Código de autorización: {{ response.authorization_code }}</p>
+    <p>Fecha de transacción: {{ response.transaction_date }}</p>
+    <p>Orden de compra: {{ response.buy_order }}</p>
+  </body>
+</html>
