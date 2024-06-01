@@ -12,11 +12,16 @@
     ></script>
   </head>
   <body class="bg-secondary">
+  <header>
     <div class="d-flex justify-content-center align-items-center vh-100">
       <div class="bg-white dark:bg-dark p-4 rounded-lg shadow-lg max-w-md">
         <h2 class="h4 font-weight-bold mb-3">Registro</h2>
         <form action="/registrar-usuario" method="post">
-          {% csrf_token %}
+        </div>
+      </div>
+  </header>
+    
+        {% csrf_token %}
           <div class="mb-3">
             <label for="email" class="form-label font-weight-medium"
               >Correo electronico</label
@@ -56,9 +61,9 @@
           <button type="submit" class="btn btn-dark w-100">Registrarse</button>
         </form>
 
-        {% if messages %} {% for message in messages %} {{ message }} {% endfor
-        %} {% endif %}
-      </div>
-    </div>
+        {% if messages %} 
+        {% for message in messages %} {{ message }} 
+        {% endfor%}
+        {% endif %}
   </body>
 </html>

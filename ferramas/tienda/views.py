@@ -1,10 +1,13 @@
+from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.models import User
+from django import forms
 from django.shortcuts import render, redirect
 from django.contrib import messages
 from django.contrib.auth import login, logout, authenticate
-from django.contrib.auth.forms import UserCreationForm
 from django.shortcuts import render
-from carrito.carrito import Carrito
 from .functions import data_from_api
+from carrito.carrito import Carrito
+from .forms import FormularioRegistro
 # Create your views here.
 
 #FRONT
@@ -38,17 +41,33 @@ def error_404(request, exception=None):
 #--------------Registro de data BBDD 2-------------------
 
 def registrar_usuario(request):
-    if request.method == 'POST':
-        form = UserCreationForm(request.POST)
+    form = FormularioRegistro()
+    if request.method == "POST":
+        form = FormularioRegistro(request.POST)
         if form.is_valid():
-            user = form.save()
-            login(request, user)
-            return redirect('/')
-        else:
-            messages.error(request, 'Hubo un problema en el registro. Por favor, verifica los datos ingresados')
-    else:
-        form = UserCreationForm()
-    return render(request, 'registro.html', {'form': form})
+            form.save()
+            username = form.cleaned_data['username']
+            password = form.cleaned_data['password1']
+
+            #log in usuario
+            user = authenticate(username=username, password=password)
+
+    return render(request, 'registro.html', {})
+
+
+
+# def registrar_usuario(request):
+#     if request.method == 'POST':
+#         form = UserCreationForm(request.POST)
+#         if form.is_valid():
+#             user = form.save()
+#             login(request, user)
+#             return redirect('/')
+#         else:
+#             messages.error(request, 'Hubo un problema en el registro. Por favor, verifica los datos ingresados')
+#     else:
+#         form = UserCreationForm()
+#     return render(request, 'registro.html', {'form': form})
 
 #-----------------Fin registro data BBDD 2-----------------
 
