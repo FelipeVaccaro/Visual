@@ -17,14 +17,14 @@ class FormularioRegistro(UserCreationForm):
 		self.fields['username'].widget.attrs['class'] = 'form-control'
 		self.fields['username'].widget.attrs['placeholder'] = 'Usuario'
 		self.fields['username'].label = ''
-		self.fields['username'].help_text = '<span class="form-text text-muted"><small>Obligatorio. 150 caracteres o menos. Letras, digitos y @/./+/-/_ solamente.</small></span>'
+		self.fields['username'].help_text = '<span"><small>su usuario, master </small></span>'
 
 		self.fields['password1'].widget.attrs['class'] = 'form-control'
 		self.fields['password1'].widget.attrs['placeholder'] = 'Contraseña'
 		self.fields['password1'].label = ''
-		self.fields['password1'].help_text = '<ul class="form-text text-muted small"><li>Tu contraseña no puede ser muy similar a tu información personal.</li><li>Tu contraseña debe contener minimo 8 caracteres.</li><li>Tu contraseña no debe ser una contraseña comun.</li><li>Tu contraseña no puede ser solo numeros.</li></ul>'
+		self.fields['password1'].help_text = '<ul">debe contener al menos 8 caracteres y eso pues, ingresa</ul>'
 
 		self.fields['password2'].widget.attrs['class'] = 'form-control'
 		self.fields['password2'].widget.attrs['placeholder'] = 'Confirma Contraseña'
 		self.fields['password2'].label = ''
-		self.fields['password2'].help_text = '<span class="form-text text-muted"><small>Para verificación, inserte la misma contraseña ingresada anteriormente.</small></span>'
+		self.fields['password2'].help_text = '<span><small></small>La misma de arria</span>'

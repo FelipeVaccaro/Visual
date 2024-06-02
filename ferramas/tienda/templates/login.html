@@ -10,46 +10,49 @@
       integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
       crossorigin="anonymous"
     ></script>
-  </head>
-  <body class="bg-secondary">
-    <div class="d-flex justify-content-center align-items-center vh-100">
-      <div class="bg-white dark:bg-dark p-4 rounded-lg shadow-lg max-w-md">
-        <h2 class="h4 font-weight-bold mb-3">Login</h2>
-        <form action="/validacion-login/" method="POST">
-          {% csrf_token %}
-          <div class="mb-3">
-            <label for="email" class="form-label font-weight-medium"
-              >Correo electronico</label
-            >
-            <input
-              id="email"
-              name="username"
-              placeholder="Ingrese su correo"
-              class="form-control"
-              type="email"
-            />
-          </div>
-          <div class="mb-3">
-            <label for="password" class="form-label font-weight-medium"
-              >Contraseña</label
-            >
-            <input
-              id="password"
-              name="password"
-              placeholder="Ingrese su contraseña"
-              class="form-control"
-              type="password"
-            />
-          </div>
-          <button type="submit" class="btn btn-dark w-100">Login</button>
-          <a href="/registro">Crear Cuenta</a>
-        </form>
-      </div>
-    </div>
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
       crossorigin="anonymous"
     ></script>
+  </head>
+
+  <body>
+
+  <div class="container">
+    <div class="row">
+      <center>
+        <div class="col-8">
+
+          <br/><br/>
+
+<div class="d-flex justify-content-center align-items-center vh-100s">
+<div class="bg-white p-4 rounded-lg shadow-lg max-w-md">
+<h2 class="h4 font-weight-bold mb-3">Login</h2>         
+<form method="POST" action="{% url 'tienda:login' %}">
+{% csrf_token %}
+
+<div class="mb-3">
+
+<input type="text" class="form-control" name="username" placeholder="Tu usuario">
+
+</div>
+<div class="mb-3">
+
+<input type="password" class="form-control" name="password" placeholder="tu contraseña">
+</div>
+<br/><br/>
+<button type="submit" class="btn btn-secondary">Login</button>
+</form>
+</div>
+</div>
+
+
+<br/><br/>
+        </div>
+      </center>
+    </div>
+  </div>
+
   </body>
 </html>
